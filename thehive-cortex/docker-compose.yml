@@ -1,0 +1,38 @@
+services:
+
+  elasticsearch:
+    image: fatimaezzahraennassiri/soc-elasticsearch:latest
+    container_name: elasticsearch
+    restart: unless-stopped
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms2g -Xmx2g
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+
+  cassandra:
+    image: fatimaezzahraennassiri/soc-cassandra:latest
+    container_name: cassandra
+    restart: unless-stopped
+    ports:
+      - "9042:9042"
+
+  thehive:
+    image: fatimaezzahraennassiri/soc-thehive:latest
+    container_name: thehive
+    restart: unless-stopped
+    depends_on:
+      - cassandra
+      - elasticsearch
+    ports:
+      - "9000:9000"
+
+  cortex:
+    image: fatimaezzahraennassiri/soc-cortex:latest
+    container_name: cortex
+    restart: unless-stopped
+    depends_on:
+      - elasticsearch
+    ports:
+      - "9001:9001"

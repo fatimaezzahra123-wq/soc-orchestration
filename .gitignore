@@ -1,3 +1,7 @@
-
+.env
+shuffle-database/
+shuffle-apps/
+shuffle-files/
+backups/
 misp/backups/
 *.tar.gz
