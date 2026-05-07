@@ -1,0 +1,5 @@
+.env
+shuffle-database/
+shuffle-apps/
+shuffle-files/
+*.tar.gz
