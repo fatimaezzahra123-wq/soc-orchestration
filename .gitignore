@@ -1,5 +1,3 @@
 .env
-shuffle-database/
-shuffle-apps/
-shuffle-files/
+backups/
 *.tar.gz
